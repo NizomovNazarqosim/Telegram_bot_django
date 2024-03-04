@@ -11,7 +11,7 @@ class Staff(models.Model):
     staff_surname = models.CharField(max_length=128, null=True, blank=True)
     staff_birthday = models.DateField()
     staff_position = models.ForeignKey(Position, on_delete=models.CASCADE)
+    staff_image = models.TextField()
 
 
 
- # staff_image = models.TextField()

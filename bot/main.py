@@ -24,9 +24,12 @@ bot = Bot(TOKEN, parse_mode=ParseMode.HTML)
 async def command_start_handler(message: Message) -> None:
     await message.answer(f"Hello, {hbold(message.from_user.full_name)}!")
 
-
 @dp.message()
 async def echo_handler(message: types.Message) -> None:
+    await message.answer(message)
+
+
+async def remainder_birthday(message: types.Message) -> None:
     try:
         result_array = []
         response = api.get_staffs().text;
@@ -58,7 +61,7 @@ async def echo_handler(message: types.Message) -> None:
         await message.answer("Nice try!")
 
 
-schedule.every(10).seconds.do(echo_handler);
+schedule.every(10).seconds.do(remainder_birthday());
 
 while True:
    schedule.run_pending()
